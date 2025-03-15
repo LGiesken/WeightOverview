@@ -1,0 +1,14 @@
+version: '3'
+services:
+  angular:
+    build:
+      context: ..
+      dockerfile: Docker/Dockerfile
+    ports:
+      - "4200:4200"  # Angular Standard-Port
+    volumes:
+      - ../Code:/app  # Bindet den Quellcode ins Container-Verzeichnis
+      - /app/node_modules # Verhindert Probleme mit node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Live-Reloading ermöglichen
+
